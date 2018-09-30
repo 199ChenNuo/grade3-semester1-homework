@@ -87,8 +87,9 @@ Apollo can achieve high utilization and low latency, while coping well with the 
 ![different cluster scheduler architectures](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Different-Cluster-Scheduler-Architectures.png)  
 
 - architectures classifaction and feature matrix  
-![architecture classifcation and feature matrix](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Architecture-Classifaction-And-Feature-Matrix.png)  
-
+![architecture classifcation and feature matrix](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Architecture-Classifaction-And-Feature-Matrix.png)   
+  Due to Apollo's architecture, Apollo has done great job in scheduling.As a scalable and coordinated scheduling framework for cloud-scale computing, Apollo adopts a distributed and loosely coordinated scheduling architecture that scales well without sacrificing scheduling quality. Each Apollo scheduler considers various factors holistically and performs estimationbased scheduling to minimize task completion time. By maintaining a local task queue on each server, Apollo enables each scheduler to reason about future resource availability and implement a deferred correction mechanism to effectively adjust suboptimal decisions dynamically.   
+  To leverage idle system resources gracefully, opportunistic scheduling is used to maximize the overall system utilization. Apollo has been deployed on production clusters at Microsoft: it has been shown to achieve high utilization and low latency, while coping well with the dynamics in diverse workloads and large clusters.  
 
 ## 6 reference  
 1. [Apollo: Scalable and Coordinated Scheduling for Cloud-Scale Computing (paper)](https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-boutin_0.pdf)  
