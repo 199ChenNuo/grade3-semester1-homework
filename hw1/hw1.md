@@ -58,6 +58,7 @@ how Estimates helps Apollo to do better job
 ![Scheduling-Balance](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Scheduling-Balance.png)  
 
 4. Correction Effectiveness  
+
 | Conditions (W: wait time) | Trigger rate | Success rate |  
 | :-: | :-: | :-: |  
 | New expected W significantly higher | 0.12% | 81.3% |  
@@ -162,7 +163,7 @@ A cluster usually hosts one large cell and may have a few smaller-scale test or 
 
 ### 2.2.3 Jobs & Tasks
 A Borg job's properties include its name, owner, and the number of tasks it has. A job runs in just one cell. Each task maps to a set of Linux processes running in a container on a machine. Most task properties are the same across all tasks in a job but can be overridden. Borg programs are statically linked to reduce dependencies on their runtime environment, and structured as packages of binaries and data files, whose installation is orchestrated by Borg. Most job descriptions are written in the declarative configuration language BCL. A user can change the properties of some or all the tasks in a running job by pushing a new job configuration to Borg, then Borg will update the tasks to the new specification. Some task updates will always require the task to be restarted, some might make the task no longer fit on the machine, and cause it to be stopped and rescheduled, and some can always be done without restarting or moving the task.  
-![jobs & tasks workflow](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/borg/job:task%20lifetime.png?raw=true)
+![jobs & tasks workflow](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/borg/job_task%20lifetime.png?raw=true)
 
 ### 2.2.4 Allocs
 A Borg alloc is a reserved set of resources on a machine in which one or more tasks can be run. Allocs can be used to set resources aside for future tasks, to retain resources between stopping a task and starting it again, and to gather tasks from different jobs onto the same machine. An alloc set is like a job which is a group of allocs that reserve resources on multiple machines. 
