@@ -161,7 +161,7 @@ Borg cells run a heterogenous workload with two main parts:
 A cluster usually hosts one large cell and may have a few smaller-scale test or special-purpose cells. The machines in a cell are heterogeneous in many dimensions: size (CPU, RAM, disk, network), processor type, performance, and capabilities such as an external IP address or flash storage.
 
 ### 2.2.3 Jobs & Tasks
-A Borg job's properties include its name, owner, and the number of tasks it has. A job runs in just one cell. Each task maps to a set of Linux processes running in a container on a machine. Most task properties are the same across all tasks in a job but can be overridden. Borg programs are statically linked to reduce dependencies on their runtime environment, and structured as packages of binaries and data files, whose installation is orchestrated by Borg. Most job descriptions are written in the declarative configuration language BCL. A user can change the properties of some or all the tasks in a running job by pushing a new job configuration to Borg, then Borg will update the tasks to the new specification. Some task updates will always require the task to be restarted, some might make the task no longer fit on the machine, and cause it to be stopped and rescheduled, and some can always be done without restarting or moving the task.
+A Borg job's properties include its name, owner, and the number of tasks it has. A job runs in just one cell. Each task maps to a set of Linux processes running in a container on a machine. Most task properties are the same across all tasks in a job but can be overridden. Borg programs are statically linked to reduce dependencies on their runtime environment, and structured as packages of binaries and data files, whose installation is orchestrated by Borg. Most job descriptions are written in the declarative configuration language BCL. A user can change the properties of some or all the tasks in a running job by pushing a new job configuration to Borg, then Borg will update the tasks to the new specification. Some task updates will always require the task to be restarted, some might make the task no longer fit on the machine, and cause it to be stopped and rescheduled, and some can always be done without restarting or moving the task.  
 ![jobs & tasks workflow](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/borg/job:task%20lifetime.png?raw=true)
 
 ### 2.2.4 Allocs
@@ -273,7 +273,7 @@ Sigma集群管理系统是阿里巴巴集团云化战略的关键系统。Sigma�
 
 下图为阿里基于Sigma与Fuxi混布架构：
 
-![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/hw1/master/hw1/sigma/2.png)
+![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw1/sigma/2.png)
 
 在线服务属于长生命周期、规则策略复杂性高、时延敏感类任务。而计算任务生命周期短、调度要求大并发高吞吐、任务有不同的优先级、对时延不敏感。基于这两种调度的本质诉求的不同，我们在混合部署的架构上把两种调度并行处理，即一台物理机上可以既有 Sigma 调度又有 Fuxi 调度，实现基础环境统一。Sigma 调度是通过 SigmaAgent 启动 PouchContainer 容器。Fuxi 也在这台物理机上抢占资源，启动自己的计算任务。所有在线任务都在 PouchContainer 容器上，它负责把服务器资源进行分配并运行在线任务，离线任务填入其空白区，保证物理机资源利用达到饱和，这样就完成了两种任务的混合部署。
 

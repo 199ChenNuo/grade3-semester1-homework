@@ -17,7 +17,7 @@ RM and PN coordinate to provide a global view for the JM to reference when makin
   
   
 Apollo architecture overview  
-![Apollo Architectura Overview](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Apollo-Architectural-Overview.png) 
+![Apollo Architectura Overview](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Apollo-Architectural-Overview.png) 
 
 ### 2.2 Characteristic  
 * a distributed and coordinated architecture  
@@ -43,19 +43,19 @@ Apollo architecture overview
 1. **High** aggregated scheduling rate at Scale  
 Apollo can constantly provide a scheduling rate of above 10,000, reaching up to 20,000 per second in a single cluster.  
 Apollo at production  
-![Apollo At Production](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Comparision-Between-Apollo-And-The-Baseline-Scheduler.png)  
+![Apollo At Production](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Comparision-Between-Apollo-And-The-Baseline-Scheduler.png)  
 
  
 2. **High** Scheduling Quality  
 Apollo delivers excellent job performance compared with the baseline scheduler and its scheduling quality is close to the optimal case.   
 comparision between Apollo and the baseline scheduler  
-![comparision between Apollo and the baseline scheduler](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Apollo-At-Production.png)  
+![comparision between Apollo and the baseline scheduler](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Apollo-At-Production.png)  
 
 
 3. Helpful and accurate **Evaluating Estimates**  
 . Apollo provides good estimates on task wait time and CPU time, despite all the challenges, and estimation does help improve scheduling quality.  
 how Estimates helps Apollo to do better job   
-![Scheduling-Balance](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Scheduling-Balance.png)  
+![Scheduling-Balance](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Scheduling-Balance.png)  
 
 4. Correction Effectiveness  
 | Conditions (W: wait time) | Trigger rate | Success rate |  
@@ -67,7 +67,7 @@ how Estimates helps Apollo to do better job
 
 5. **Stable** Matching Efficiency  
 Apollo’s matching algorithm has the same asymptotic complexity as a naive greedy algorithm with negligible overhead. It performs significantly better than the greedy algorithm and is within 5% of the optimal scheduling in our simulation.  
-![Matching-quality](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Matching-Quality.png)  
+![Matching-quality](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Matching-Quality.png)  
 
 ### 3.2 cons  
 
@@ -84,10 +84,10 @@ Apollo can achieve high utilization and low latency, while coping well with the 
 
 ## 5 Conculsion  
 - different cluster scheduler architectures  
-![different cluster scheduler architectures](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Different-Cluster-Scheduler-Architectures.png)  
+![different cluster scheduler architectures](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Different-Cluster-Scheduler-Architectures.png)  
 
 - architectures classifaction and feature matrix  
-![architecture classifcation and feature matrix](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/apollo/Architecture-Classifaction-And-Feature-Matrix.png)   
+![architecture classifcation and feature matrix](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw1/apollo/Architecture-Classifaction-And-Feature-Matrix.png)   
   Due to Apollo's architecture, Apollo has done great job in scheduling.As a scalable and coordinated scheduling framework for cloud-scale computing, Apollo adopts a distributed and loosely coordinated scheduling architecture that scales well without sacrificing scheduling quality. Each Apollo scheduler considers various factors holistically and performs estimationbased scheduling to minimize task completion time. By maintaining a local task queue on each server, Apollo enables each scheduler to reason about future resource availability and implement a deferred correction mechanism to effectively adjust suboptimal decisions dynamically.   
   To leverage idle system resources gracefully, opportunistic scheduling is used to maximize the overall system utilization. Apollo has been deployed on production clusters at Microsoft: it has been shown to achieve high utilization and low latency, while coping well with the dynamics in diverse workloads and large clusters.  
 

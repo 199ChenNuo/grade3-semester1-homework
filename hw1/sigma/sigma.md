@@ -14,7 +14,7 @@ Sigma集群管理系统是阿里巴巴集团云化战略的关键系统。Sigma�
 
 下图为Sigma调度系统的整理架构，有Alikenel、SigmaSlave、SigmaMaster三层大脑联动合作。
 
-![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/sigma/1.png)
+![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw1/sigma/1.png)
 
 - Alikenel部署在每一台NC上，对内核进行增强，在资源分配、时间片分配上进行灵活的按优先级和策略调整，对任务的时延，任务时间片的抢占、不合理抢占的驱逐都能通过上层的规则配置自行决策。
 - SigmaSlave可以在本机上进行CPU的分配、应急场景的处理。通过本机Slave对时延敏感任务快速做出决策和响应，避免因全局决策处理时间长带来的业务损失。
@@ -29,14 +29,14 @@ Sigma集群管理系统是阿里巴巴集团云化战略的关键系统。Sigma�
 
 下图为阿里基于Sigma与Fuxi混布架构：
 
-![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/sigma/2.png)
+![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw1/sigma/2.png)
 
 在线服务属于长生命周期、规则策略复杂性高、时延敏感类任务。而计算任务生命周期短、调度要求大并发高吞吐、任务有不同的优先级、对时延不敏感。基于这两种调度的本质诉求的不同，我们在混合部署的架构上把两种调度并行处理，即一台物理机上可以既有 Sigma 调度又有 Fuxi 调度，实现基础环境统一。Sigma 调度是通过 SigmaAgent 启动 PouchContainer 容器。Fuxi 也在这台物理机上抢占资源，启动自己的计算任务。所有在线任务都在 PouchContainer 容器上，它负责把服务器资源进行分配并运行在线任务，离线任务填入其空白区，保证物理机资源利用达到饱和，这样就完成了两种任务的混合部署。
 
 ### 4. Pros：
 - 通过混部，系统在平时可以极大地提升服务器资源利用率：而在双 11 这样的大促活动需要突增在线服务能力的时候，又可以通过在线服务占用计算任务资源的方式，来顶住短暂的超高峰值压力。混布之后在线机器的平均资源利用率从之前的10%左右提高到了现在的40%以上，并且同时保证了在线服务的SLO目标。
  
-![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/sigma/3.png)
+![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw1/sigma/3.png)
 
 - 复杂约束下的批量调度优化：调度主要在竞争之前，通过资源画像，尽量减少资源竞争的可能性；提高了在线任务调度优先级。对应用的内存、CPU、网络、磁盘和网络 I/O 容量进行画像，知道它的特征、资源规格需求，不同的时间对资源真实使用情况，然后对整体规格和时间进行相关性分析，进行整体调度优化。
 
@@ -48,7 +48,7 @@ Sigma集群管理系统是阿里巴巴集团云化战略的关键系统。Sigma�
 - 精确高水位排布
 不同的场景有不同的策略，双 11 的策略是稳定优先，稳定性优先代表采用平铺策略，把所有的资源用尽，让资源层全部达到最低水位。日常场景需要利用率优先，“利用率优先” 指让已经用掉的资源达到最高水位，空出大量完整资源做规模化的计算。
 
-![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/sigma/4.png)
+![image](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw1/sigma/4.png)
 
 - 大规模快速建站：日常扩容仅预热基础镜像；
 大促建站预热基础镜像；
