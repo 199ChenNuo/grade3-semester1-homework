@@ -1,8 +1,10 @@
 # xPU
 
 ## Tensor Pro​cessing Unit (TPU)
-Vendor: Google.
-Type: Neural processor.
+Vendor: Google.  
+
+Type: Neural processor.  
+
 Example:  
 * Reducing word error rates in speech recognition by 30% over traditional approaches.
 * Cutting the error rate in an image recognition competition since 2011 from 26% to 3.5%.
@@ -40,7 +42,7 @@ The heart of the TPU is a 65,536 8-bit MAC matrix multiply unit that offers a pe
 
 #### Rooflines, Response-Time, and Throughput
 The Y-axis is performance in floating-point operations per second, thus the peak computation rate forms the “flat” part of the roofline. The X-axis is operational intensity, measured as floating-point operations per DRAM byte accessed.
-![rootline](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw2/xPU/rootline.png)
+![rootline](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw2/xPU/roofline.png)
 
 
 #### Cost-Performance, TCO, and Performance/Watt
@@ -57,13 +59,14 @@ The K80 is closer to the CPU than the TPU, using 66% of the full load power at 1
 
 
 ## Intelligence Processing Unit （IPU）
-Vendor: Graphcore.
+Vendor: Graphcore.  
+
 Type: Neural processor.
 
 ### Feature
 * Designed ground-up for MI, both training and deployment.
 * Large 16nm custom chip, cluster-able, 2 per PCIe card.
-* >1000 truly independent processors per chip; all-to-all non-blocking exchange.
+* Over 1000 truly independent processors per chip; all-to-all non-blocking exchange.
 * All model state remains on chip; no directly-attached DRAM.
 * Mixed-precision floating-point stochastic arithmetic.
 
@@ -76,7 +79,8 @@ Type: Neural processor.
 
 
 ## DianNao
-Vendor: Cambricon.
+Vendor: Cambricon.  
+
 Type: AI accelerator.
 
 ### Feature
