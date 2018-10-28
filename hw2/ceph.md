@@ -220,7 +220,7 @@ I think although Ceph has problems like hard to operation and maintain, it is st
 #### Cons
 * 塔式服务器个头太大，独立性太强，协同工作在空间占用和系统管理上都不方便
 
-[Reference]https://baike.baidu.com/item/%E5%A1%94%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/5863706
+[Reference](https://baike.baidu.com/item/%E5%A1%94%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/5863706)
 
 ### 2.1.2 机架式服务器
 
@@ -232,7 +232,7 @@ I think although Ceph has problems like hard to operation and maintain, it is st
 #### Cons
 * 因为空间紧凑因而散热较差
 
-[Reference]https://baike.baidu.com/item/%E6%9C%BA%E6%9E%B6%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/485424?fr=aladdin
+[Reference](https://baike.baidu.com/item/%E6%9C%BA%E6%9E%B6%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/485424?fr=aladdin)
 
 ### 2.1.3机柜式服务器
 
@@ -261,7 +261,7 @@ I think although Ceph has problems like hard to operation and maintain, it is st
 * 多数刀片中心常用的2.5英寸硬盘通常比非刀片服务器上使用的传统3.5英寸SAS/SATA硬盘故障率要高（随着时间的推移，这种缺陷正在得到改进）。
 * 一旦你承诺使用刀片中心，再购买刀片服务器时就会受到厂商的限制，这样从价格的角度来看对供应商不利。
 
-[Reference]https://baike.baidu.com/item/%E5%88%80%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/1375424?fr=aladdin#3
+[Reference](https://baike.baidu.com/item/%E5%88%80%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/1375424?fr=aladdin#3)
 
 ### 关键考虑因素
 * **功耗成本**，需要对业务计划和项目增长计划有预期估计，推算电力需求和电力成本
@@ -585,8 +585,7 @@ ZQ也是一个新增的脚，在这个引脚上接有一个240欧姆的低公差
 
 1. [《内存》 百度百科](https://baike.baidu.com/item/%E5%86%85%E5%AD%98/103614?fr=aladdin)
 
-2. [《Random access memory》 维基百科](https://en.wikipedia.org/wiki/Random-access_memory#Types
-https://product.pconline.com.cn/itbk/software/dnyw/1802/10845084.html)
+2. [《Random access memory》 维基百科](https://en.wikipedia.org/wiki/Random-access_memory#Types)
 
 3. [《DDR4内存》 百度百科](https://baike.baidu.com/item/DDR4%E5%86%85%E5%AD%98?fromtitle=DDR4&fromid=10627930)
 
