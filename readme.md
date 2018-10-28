@@ -17,6 +17,15 @@
 | 李珊 | Sigma |
 | 王梦瑶 | Brog |
 | 陈诺 | Apollo |
-| 胡雨奇 | Omega |
+| 胡雨奇 | Omega |  
+
+* 第二次作业 
+
+| 成员 | 负责内容 |  
+| :-: | :-: |  
+| 李珊 | memory |
+| 王梦瑶 | xPU |
+| 陈诺 | storage |
+| 胡雨奇 | network |  
 
 
