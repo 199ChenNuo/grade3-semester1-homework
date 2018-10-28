@@ -104,6 +104,6 @@ An accelerator with a high throughput, capable of performing 452 GOP/s (key NN o
 
 
 ## Comments
-
+Nowadays, many companys begin to develop their own processing unit to meet that demands for increasing deep learning calculation, to accelerate the speed of training and inferencing models. It costs huge amount of money and people to explore. The xPU is specially made for machine learning and it is greatly optimized on the basis of CPU according to the needs for machine learning. For students who wants to learn machine learning and train some models for practicing, a good CPU or GPU is absolutely enough.
 
 
