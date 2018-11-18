@@ -28,4 +28,13 @@
 | 陈诺 | storage |
 | 胡雨奇 | network |  
 
+* 第三次作业
+
+| 成员 | 模块 | 负责内容 |
+| :-: | :-: | :-: |
+| 李珊 | A | storage & network Tests |  
+| 王梦瑶 | D | demonstrate streaming processing |
+| 陈诺 | C | quantitative analying |
+| 胡雨奇 | B | setup a Kafka cluster, producer & consumer |
+
 
