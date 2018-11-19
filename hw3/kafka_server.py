@@ -10,13 +10,13 @@ class kafka_server:
         self.prt_mtx = threading.Lock()
         self.consnum = 0
     def zookeeper(self):
-        cmd = r'\"%sbin/zkserver'%self.zookeeper_path
-        os.popen(cmd)
-        print("zkserver already existed")
+        cmd = '\"%sbin/zkserver\"'%self.zookeeper_path
+        os.popen(cmd).read()
+        print("zkserver already existed or error")
     def kafka(self):
         cmd = '\"%sbin/windows/kafka-server-start\" \"%sconfig/server.properties\"'%(self.kafka_path,self.kafka_path)
-        os.popen(cmd)
-        print("kafka server already existed")
+        os.popen(cmd).read()
+        print("kafka server already existed or error")
     def run(self):
         threading.Thread(target=self.zookeeper,args=()).start()
         time.sleep(1)
