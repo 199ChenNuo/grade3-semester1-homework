@@ -51,14 +51,14 @@ Sub-topologies:
 ```
 ./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic number-sum-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.IntegerDeserializer --property value.deserializer=org.apache.kafka.common.serialization.IntegerDeserializer
 ```
-* The Result:
+* The Result:（The negative value is caused by overflow of integer value)
 ![sumup](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw3/Streaming%20Processing/sumupdemo.png)
 
 ## Scensrio 2: Word count
 * Create the topic for the input stream and output stream(count-input & count-output)
 * WordCountProducer(.java) continuously produces sentences into count-input topic.  
 * SumUpStream(.java) continuously processes the sentences in count-input topic and put the counting results into count-output topic.  
-```
+```java
 KStream<String, String> input = builder.stream("count-input");
 KTable<String, Long> wordCounts = input
 		.flatMapValues(value -> Arrays.asList(value.toLowerCase().split("\\W+")))     // split the sentences into words
@@ -67,7 +67,7 @@ KTable<String, Long> wordCounts = input
 wordCounts.toStream().to("count-output", Produced.with(Serdes.String(), Serdes.Long()));
 ```
 * See the result by use consumer cmd tools:
-```java
+```
 ./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic count-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
 ```
