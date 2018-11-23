@@ -26,7 +26,8 @@ see in [part-A](https://github.com/199ChenNuo/grade3-semester1-homework/tree/mas
     1. producer
 <code>
 kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx --throughput xxx --producer-props bootstrap.servers=ip:port
-</code>
+</code>  
+
         -   thread number  
 
         | No. | topic | thread number | partition | replication | records/second | MB/second | latency(ms) |
@@ -53,6 +54,7 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
             but there is limitation to this improving method;
             on the on hand, partitions may be on different machines, so we can make use of cluster's advantages. on the other hand, a partition matches to a directory. by set patitions on one node to different disks, we can parallel disk management, and make full use of mutil-disks.  
             ![partition](https://images2015.cnblogs.com/blog/1077472/201612/1077472-20161226115551101-978766277.png)  
+
 
         - replication number
 
@@ -85,12 +87,15 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
 
         summery:
         the larger the record size is, the smaller secord sent per second, the larger MB/second
+        ![throughput](https://github.com/199ChenNuo/grade3-semester1-homework/tree/master/hw3/part%20C%20quantitative%20analyzing/throughput.png)  
+        ![data](https://github.com/199ChenNuo/grade3-semester1-homework/tree/master/hw3/part%20C%20quantitative%20analyzing/MBperSecond.png)
 
 
     2. comsumer
 <code>
 kafka-consumer-perf-test.bat --broker-list ip:port --consumer.config ../../config/consumer.properties --num-fetch-threads x --topic test-x-x --messages xxxx
-</code>
+</code>  
+
         - consumer number
 
         | No. | topic | consumer number  | partition | replication | records/second | MB/second |
