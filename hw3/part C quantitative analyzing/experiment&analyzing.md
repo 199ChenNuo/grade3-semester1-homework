@@ -1,5 +1,3 @@
-# cmd command  
-
 1. performace without kafka
 see in [part-A](https://github.com/199ChenNuo/grade3-semester1-homework/tree/master/hw3/part%20A)  
 
@@ -22,11 +20,11 @@ see in [part-A](https://github.com/199ChenNuo/grade3-semester1-homework/tree/mas
         - zookeeper zookeeper的地址
         - num-fetch-threads 拉取数据的线程数量 即为消费者的数量
 
-1. quantitative analyzing
-    1. producer
-<code>
-kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx --throughput xxx --producer-props bootstrap.servers=ip:port
-</code>  
+1. quantitative analyzing  
+    1. producer  
+
+        kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx --throughput xxx --producer-props bootstrap.servers=ip:port  
+
 
         -   thread number  
 
@@ -41,7 +39,7 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
             there is report that says old version can improve producers' throughput by making thread number smaller than partition number. (with fixed partition number)  
 
 
-        - partition number
+        - partition number  
 
         | No. | topic | thread number | partition | replication | records/second | MB/second | latency(ms) |
         | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -53,20 +51,20 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
             the larger the partition is, the bigger the throughput (but in the new version, we have to set up parition)  
             but there is limitation to this improving method;
             on the on hand, partitions may be on different machines, so we can make use of cluster's advantages. on the other hand, a partition matches to a directory. by set patitions on one node to different disks, we can parallel disk management, and make full use of mutil-disks.  
-            ![partition](https://images2015.cnblogs.com/blog/1077472/201612/1077472-20161226115551101-978766277.png)  
+![partition](https://images2015.cnblogs.com/blog/1077472/201612/1077472-20161226115551101-978766277.png)  
 
-
-        - replication number
+  
+        - replication number  
 
         | No. | topic | thread number | partition | replication | records/second | MB/second | avg latency(ms) |
-        | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+        | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
         | 1 | test3-1 | 3 | 3 | 1 | 10000000 | 33.91 | 759.47 |
         | 2 | test3-2 | 3 | 3 | 2 | 10000000 | 24.10 | 1047.57 |
 
         summery:
             larger replication will slow down the MB/second, and almost cut the average latency half down.
 
-        - batch
+        - batch  
 
         batch can optimize I/O. for kafka, it cuts off network transmission overhead, and improves disks writes.   
         before and kafka 0.8.1, sync & asyn producers are seperated. one sends out a single message every time, the other caches messages and then send them together.  
@@ -76,7 +74,7 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
         ![batch](https://images2015.cnblogs.com/blog/1077472/201612/1077472-20161226133619429-1157988196.png)  
         ![batch-2](https://images2015.cnblogs.com/blog/1077472/201612/1077472-20161226133702320-1447501384.png)
 
-        - record size
+        - record size  
 
         | No. | topic | record size | thread number | partition | replication | records/second | MB/second | latency(ms) |
         | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -87,14 +85,14 @@ kafka-producer-perf-test.bat --num-records xxx --topic testx-x --record-size xxx
 
         summery:
         the larger the record size is, the smaller secord sent per second, the larger MB/second
-        ![throughput](https://github.com/199ChenNuo/grade3-semester1-homework/tree/master/hw3/part%20C%20quantitative%20analyzing/throughput.png)  
-        ![data](https://github.com/199ChenNuo/grade3-semester1-homework/tree/master/hw3/part%20C%20quantitative%20analyzing/MBperSecond.png)
+        ![throughput](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw3/part%20C%20quantitative%20analyzing/throughput.png)  
+        ![data](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw3/part%20C%20quantitative%20analyzing/MBperSecond.png)
 
 
-    2. comsumer
-<code>
-kafka-consumer-perf-test.bat --broker-list ip:port --consumer.config ../../config/consumer.properties --num-fetch-threads x --topic test-x-x --messages xxxx
-</code>  
+    2. comsumer  
+
+        kafka-consumer-perf-test.bat --broker-list ip:port --consumer.config ../../config/consumer.properties --num-fetch-threads x --topic test-x-x --messages xxxx
+
 
         - consumer number
 
@@ -106,7 +104,7 @@ kafka-consumer-perf-test.bat --broker-list ip:port --consumer.config ../../confi
         - partition
 
         | No. | topic | partition | thread number | partition | replication | records/second | MB/second |
-        | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+        | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
         | 1 | test2-1 | 1 | 3 | 1 | 1 | 4023 | 0.3859 |
         | 2 | test2-2 | 2 | 3 | 1 | 1 | 4315 | 0.4107 |
         | 3 | test2-3 | 6 | 3 | 1 | 1 | 4920 | 0.4155 |
