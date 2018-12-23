@@ -1,5 +1,8 @@
 ## Prepare a CI/CD environment
 
+Frontend repo:[https://github.com/myuaggie/eatornot_frontend](https://github.com/myuaggie/eatornot_frontend)
+Backend repo:[https://github.com/myuaggie/eatornot_backend](https://github.com/myuaggie/eatornot_backend)  
+
 Use Jenkins in docker image to do CI/CD.
 1. Download Jenkins image.
 ``` 
@@ -16,6 +19,7 @@ Mount the host's docker cmd to the container.(optional)
 4. Set automatic Nodejs installations in the global tool configuration.
 5. Config New Job.
 Choose “创建一个自由风格的软件项目” -> Config Github URL -> Config Build Trigger(SCM) -> Config Build Environment(Provide Node & npm bin/ folder to PATH) -> Config Build(execute shell: npm install; npm run build)
+![frontend package result](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/frontendbuild.png)
 
 ### CI/CD backend
 4. Set java_home in the global tool configuration.
@@ -29,7 +33,7 @@ Choose “创建一个自由风格的软件项目” -> Config Github URL -> Con
 ```
 7. Config New Job.
 Choose “Create Maven Project” -> Config Github URL -> Config Build Trigger(SCM) -> Config Build(Goals and options: clean package)
-
+![backend package result](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/backendbuild.png)
 ## Prepare a web application build container images
 
 Use Eat or Not as the example web application with react frontend, springboot backend and mysql database.
@@ -114,6 +118,7 @@ So changes the connection configuration in hibernate.cfg.xml(use the alias **db*
 ``` 
    docker run -itd -p 5000:5000 -v <some_host_path>:/var/lib/registry --name registry registry:2.5
 ```
+7. Set **insecure registries**([your_ip]:5000) in Docker‘s Daemon Setting.
 
 ### Frontend
 Add Post-build Actions: send build artifacts over SSH:
@@ -124,7 +129,7 @@ Exec command：
     /usr/local/bin/docker-compose down
     /usr/local/bin/docker-compose up -d
 ```
-
+![frontend build image result](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/frontenddocker.png)
 ### Backend
 Add Post-build Actions: send files or execute commands over SSH:
 Transfer the jar package in target folder built by maven.
@@ -141,7 +146,8 @@ The main content in docker.sh:
     /usr/local/bin/docker rmi -f $IMAGE_ID
 ```
 2. Build docker image by Dockerfile（Dockerfile can be in the server or sent by SSH).
-``` /usr/local/bin/docker build --build-arg app=$JARNAME .  -t  $IMAGES_NAME:$BUILD_ID
+``` 
+    /usr/local/bin/docker build --build-arg app=$JARNAME .  -t  $IMAGES_NAME:$BUILD_ID
 ```
 3. Run container based on the built image.
 ``` 
@@ -152,9 +158,11 @@ The main content in docker.sh:
     /usr/local/bin/docker tag $IMAGES_NAME:$BUILD_ID <host_ip>:5000/$IMAGES_NAME:$BUILD_ID
     /usr/local/bin/docker push <host_ip>:5000/$IMAGES_NAME:$BUILD_ID
 ```
+![backend build image result](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/backenddocker.png)
 
+## Result
+### Containers
+![containers](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/containers.png)
 
-
-
-
-
+### CI/CD Results
+![cicdresult](https://raw.githubusercontent.com/199ChenNuo/grade3-semester1-homework/master/hw4/part1/img/cicdresult.png)
