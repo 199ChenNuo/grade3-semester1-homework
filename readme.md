@@ -38,3 +38,11 @@
 | 胡雨奇 | B | setup a Kafka cluster, producer & consumer |
 
 
+* 第四次作业
+
+| 成员 | 模块 | 负责内容 |
+| :-: | :-: | :-: |
+| 李珊 | part2 | prepare a kubernetes environment |  
+| 王梦瑶 | part1 | prepare a CI/CD environment, a web application, container images, automatically build after a PR |
+| 陈诺 | part3 | deploy web application on Kubernetes |
+| 胡雨奇 | part4 | Load Balance, Experiment, Deliverable |
