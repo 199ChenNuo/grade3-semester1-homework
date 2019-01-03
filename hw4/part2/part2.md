@@ -311,3 +311,50 @@ kubeadm join 192.168.5.134:6443 --token 7kgabq.wcmyza9xu5o0jfcn --discovery-toke
 ![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/12.png?raw=true)
 
 如上，全部Running则表示集群正常。至此，我们的K8S集群就搭建成功了。
+
+## 7.dashboard
+### 下载kubernetes-dashboard.yaml
+原教程里的 [下载链接](https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml/)
+已经404了
+
+这是找的[新下载链接](https://github.com/gh-Devin/kubernetes-dashboard/blob/master/kubernetes-dashboard.yaml)
+
+### 安装dashboard
+#### 1.导入镜像
+###### 下载镜像
+
+链接：https://pan.baidu.com/s/11AheivJxFzc4X6Q5_qCw8A  密码：2zov
+
+###### 导入镜像：
+```
+docker load < k8s.gcr.io#kubernetes-dashboard-amd64.tar
+```
+![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/13.png?raw=true)
+
+#### 2.创建Dashboard
+导入镜像后，使用之前下载的yaml文件即可创建Dashboard：
+
+```
+kubectl create -f kubernetes-dashboard.yaml
+```
+![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/14.png?raw=true)
+
+#### 3.访问Dashboard
+执行
+```
+ubectl proxy --address=192.168.5.134 --disable-filter=true
+```
+![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/15.png?raw=true)
+
+执行
+```
+kubectl get services --namespace kube-system
+```
+![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/16.png?raw=true)
+
+访问
+[10.106.158.105:9090](10.106.158.105:9090)得到以下界面
+
+![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/17.png?raw=true)
+
+dashboard部署成功，运行成功。
