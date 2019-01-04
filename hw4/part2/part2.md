@@ -342,7 +342,7 @@ kubectl create -f kubernetes-dashboard.yaml
 #### 3.访问Dashboard
 执行
 ```
-ubectl proxy --address=192.168.5.134 --disable-filter=true
+kubectl proxy --address=192.168.5.134 --disable-filter=true
 ```
 ![image](https://github.com/199ChenNuo/grade3-semester1-homework/blob/master/hw4/part2/img/15.png?raw=true)
 
