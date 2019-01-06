@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-node-service-lb
+  labels:
+    name: kube-node-service-lb
+spec:
+  type: LoadBalancer
+  clusterIP: 10.99.201.198
+  ports:
+  - port: 80
+    targetPort: 8081
+    protocol: TCP
+    nodePort: 32145
+  selector:
+    app: web
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.174.127

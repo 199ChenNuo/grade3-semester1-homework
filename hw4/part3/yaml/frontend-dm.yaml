@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-pod
+  template:
+    metadata:
+      labels: 
+        app: frontend-pod
+    spec:
+      containers:
+      - name: frontend
+        image: 199chennuo/eatornot:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
